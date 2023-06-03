@@ -1,0 +1,37 @@
+<div class="container">
+    <h1>Liste des salles</h1>
+    <div class="text-end mb-3">
+      <button class="btn btn-outline-info">
+        <span  [routerLink]="['/add-salles']" >Ajouter une salle</span>
+      </button>
+    </div>
+  
+    <div *ngIf="erreurSuppression" class="alert alert-danger">{{ erreurSuppression }}</div>
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Numéro</th>
+              <th>Nombre de places</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let salle of salles">
+              <td>{{ salle.id }}</td>
+              <td>{{ salle.numero }}</td>
+              <td>{{ salle.nombrePlace }}</td>
+              <td>
+                <div class="btn-group" role="group" aria-label="Actions">
+                  <button class="btn btn-danger me-2" (click)="confirmerSuppression(salle.id)">Supprimer</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  

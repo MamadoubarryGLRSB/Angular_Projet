@@ -1,0 +1,23 @@
+<div class="container d-flex justify-content-center">
+    <div class="card">
+      <div class="card-header">
+        <h1>Ajouter un module</h1>
+      </div>
+      <div class="card-body">
+        <div class="alert alert-danger" *ngIf="champsVides">
+          Veuillez remplir tous les champs obligatoires.
+        </div>
+        <div class="alert alert-success" *ngIf="messageAjout">
+          {{ messageAjout }}
+        </div>
+        <form (ngSubmit)="ajouterModule()" #moduleForm="ngForm">
+          <div class="mb-3">
+            <label for="libelle" class="form-label">Libellé du module</label>
+            <input type="text" class="form-control" id="libelle" name="libelle" [(ngModel)]="nouveauModule.libelle" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Ajouter</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  

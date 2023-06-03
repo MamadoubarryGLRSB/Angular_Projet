@@ -1,0 +1,36 @@
+<div class="container">
+    <h1>Liste des professeurs</h1>
+    <div class="text-end mb-3">
+      <button class="btn btn-outline-info">
+        <span  [routerLink]="['/add-prof']" >Ajouter un professeur</span>
+      </button>
+    </div>
+  
+    <div *ngIf="erreurSuppression" class="alert alert-danger">{{ erreurSuppression }}</div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nom complet</th>
+          <th>Spécialités</th>
+          <th>Grades</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let professeur of professeurs">
+          <td>{{ professeur.id }}</td>
+          <td>{{ professeur.nomComplet }}</td>
+          <td>{{ professeur.specialites }}</td>
+          <td>{{ professeur.grades }}</td>
+          <td>
+            <div class="btn-group" role="group" aria-label="Actions">
+              <button class="btn btn-primary me-2" [routerLink]="['/prof-cours', professeur.id]">Mes cours</button>
+              <button class="btn btn-danger me-2"  (click)="confirmerSuppression(professeur.id)">Supprimer</button>              
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

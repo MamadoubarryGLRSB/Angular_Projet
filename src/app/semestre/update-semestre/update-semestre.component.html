@@ -1,0 +1,15 @@
+<div class="container">
+    <h2 class="text-center">Modifier le semestre</h2>
+  
+    <div class="alert alert-success mt-3" *ngIf="messageAjout">{{ messageAjout }}</div>
+  
+    <form class="text-center" (submit)="modifierSemestre()" style="max-width: 400px; margin: 0 auto;">
+      <div class="mb-3">
+        <label for="libelle" class="form-label">Libellé :</label>
+        <input type="text" class="form-control" id="libelle" [(ngModel)]="semestre.libelle" name="libelle" required>
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Modifier</button>
+    </form>
+  </div>
+  

@@ -1,0 +1,33 @@
+<div class="container">
+    <h1>Ajouter un étudiant</h1>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <form [formGroup]="etudiantForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="username" class="form-label">Nom d'utilisateur</label>
+            <input type="text" class="form-control" id="username" formControlName="username" required>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Mot de passe</label>
+            <input type="password" class="form-control" id="password" formControlName="password" required>
+          </div>
+          <div class="mb-3">
+            <label for="matricule" class="form-label">Matricule</label>
+            <input type="text" class="form-control" id="matricule" formControlName="matricule" required>
+          </div>
+          <div class="mb-3">
+            <label for="nomComplet" class="form-label">Nom complet</label>
+            <input type="text" class="form-control" id="nomComplet" formControlName="nomComplet" required>
+          </div>
+          <div class="mb-3">
+            <label for="roles" class="form-label">Rôles</label>
+            <select multiple class="form-control" id="roles" formControlName="roles">
+              <option *ngFor="let role of roles" [ngValue]="role">{{ role.roleName }}</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Ajouter</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  

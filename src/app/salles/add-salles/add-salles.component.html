@@ -1,0 +1,30 @@
+<div class="container">
+    <h1>Ajouter une salle</h1>
+    
+    <div class="alert alert-danger" *ngIf="champsVides">
+      Veuillez remplir tous les champs obligatoires.
+    </div>
+    
+    <div class="alert alert-success" *ngIf="messageAjout">
+      {{ messageAjout }}
+    </div>
+    
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <form (ngSubmit)="ajouterSalle()" #salleForm="ngForm">
+          <div class="mb-3">
+            <label for="numero" class="form-label">Numéro de salle</label>
+            <input type="number" class="form-control" id="numero" name="numero" [(ngModel)]="nouvelleSalle.numero" required>
+          </div>
+          
+          <div class="mb-3">
+            <label for="nombrePlace" class="form-label">Nombre de places</label>
+            <input type="number" class="form-control" id="nombrePlace" name="nombrePlace" [(ngModel)]="nouvelleSalle.nombrePlace" required>
+          </div>
+          
+          <button type="submit" class="btn btn-primary">Ajouter</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  

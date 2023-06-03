@@ -3,6 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LayoutModule } from './template/layout/layout.module';
+import {  HttpClientModule } from '@angular/common/http';
+
+import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -10,9 +16,12 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    LayoutModule,HttpClientModule,ReactiveFormsModule,ReactiveFormsModule
+   
   ],
-  providers: [],
+  exports: [RouterModule],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

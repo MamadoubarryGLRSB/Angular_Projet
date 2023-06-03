@@ -1,0 +1,55 @@
+<div class="container">
+  <h1>Liste des Sessions de Cours</h1>
+  <div class="text-end mb-3">
+    <button class="btn btn-outline-info">
+      <span  [routerLink]="['/add-sessionCours']"  >Ajouter une Session</span>
+    </button>
+ </div>
+  
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Date</th>
+        <th>Heure de début</th>
+        <th>Heure de fin</th>
+        <th>Nombre d'heures</th>
+        <th>Salle</th>
+       
+       
+        <th>État</th>
+        <th>SESSION</th>
+       
+       
+       
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sessionCours of sessionsCours">
+        <td>{{ sessionCours.id }}</td>
+        <td>{{ sessionCours.date | date }}</td>
+        <td>{{ sessionCours.heureDebut }}:00</td>
+        <td>{{ calculerHeureFin(sessionCours.heureDebut, sessionCours.nbreHeures) }}</td>
+        <td>{{ sessionCours.nbreHeures }} h</td>
+        <td>{{ sessionCours.salleId }}</td>
+       
+   
+   
+        <td [ngClass]="{ 'text-danger': sessionCours.etat === 'Annuler', 'text-success': sessionCours.etat === 'En Cours', 'text-warning': sessionCours.etat === 'Terminée' }">{{ sessionCours.etat }}</td>
+        <td [ngClass]="{ 'text-danger': sessionCours.etat_session === 'Annuler', 'text-success': sessionCours.etat_session === 'En Cours', 'text-warning': sessionCours.etat_session === 'En Ligne' }">{{ sessionCours.etat_session }}</td>
+      
+        <td>
+          <button (click)="annulerSessionCours(sessionCours)" class="btn btn-info me-2">Annuler</button>
+          <button (click)="sessionChange(sessionCours)" class="btn btn-warning me-2">En Ligne</button>
+          <button class="btn btn-danger" (click)="sessionCours.id !== null ? confirmerSuppression(sessionCours.id) : null">Supprimer</button>
+        </td>
+      </tr>
+    </tbody>
+    
+  </table>
+
+  <div *ngIf="erreurSuppression" class="alert alert-danger">
+    {{ erreurSuppression }}
+  </div>
+</div>

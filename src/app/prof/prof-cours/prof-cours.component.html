@@ -1,0 +1,48 @@
+<div class="container">
+  <h1 class="titre-cours">Session de cours du professeur {{ professeur?.nomComplet }}</h1>
+
+
+  <div class="d-flex justify-content-start mb-3">
+    <div class="mr-2">
+      <button class="btn btn-primary me-2" (click)="loadSessionCours('jour')">Filtrer par jour</button>
+    </div>
+    <div class="mr-2">
+      <button class="btn btn-success me-2" (click)="loadSessionCours('semaine')">Filtrer par semaine</button>
+    </div>
+    <div>
+      <button class="btn btn-info me-2" (click)="loadAllSessionCours()">ALL</button>
+    </div>
+  </div>
+
+  <div class="session-cours" *ngIf="sessionCours && sessionCours.length > 0">
+    <h2>Sessions de cours</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Heure de début</th>
+          <th>Durée</th>
+          <th>État</th>
+          <th>État de la session</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let session of sessionCours">
+          <td>{{ session.date }}</td>
+          <td>{{ session.heureDebut }}</td>
+          <td>{{ session.nbreHeures }}</td>
+          <td>{{ session.etat }}</td>
+          <td>{{ session.etat_session }}</td>
+          <td>
+            <button class="btn btn-danger" *ngIf="session.id !== null" (click)="demanderAnnulation(session.id)">Demander annulation</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="no-session-cours" *ngIf="!sessionCours || sessionCours.length === 0">
+    <p>Aucune session de cours trouvée.</p>
+  </div>
+</div>

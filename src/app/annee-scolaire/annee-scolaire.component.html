@@ -1,0 +1,23 @@
+<div class="container">
+    <h1>Liste des années scolaires</h1>
+    <div  class="text-end mb-3">
+      <button class="btn btn-outline-info me-2" [routerLink]="['/add-anneeScolaire']">Ajouter</button>
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Date de début</th>
+          <th>Date de fin</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let annee of annees">
+          <td>{{ annee.id }}</td>
+          <td>{{ annee.dateDebut | date }}</td>
+          <td>{{ annee.dateFin | date }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

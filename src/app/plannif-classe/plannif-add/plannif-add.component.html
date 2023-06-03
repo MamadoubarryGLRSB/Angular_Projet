@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <h2>Ajouter une planification de classe</h2>
+  
+        <form (submit)="addPlanification()">
+          
+          <div class="mb-3">
+            <label for="classe" class="form-label">Classe</label>
+            <select class="form-control" id="classe" [(ngModel)]="planification.classeId" name="classe">
+              <option *ngFor="let classe of classes" [value]="classe.id">{{ classe.libelle }}</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="anneeScolaire" class="form-label">Année scolaire</label>
+            <select class="form-control" id="anneeScolaire" [(ngModel)]="planification.anneeScolaireId" name="anneeScolaire">
+              <option *ngFor="let annee of anneeScolaires" [value]="annee.id">{{ annee.dateDebut }} - {{ annee.dateFin }}</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Ajouter</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  

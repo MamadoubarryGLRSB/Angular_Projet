@@ -1,0 +1,28 @@
+<div class="container">
+    <h2 class="text-center">Ajouter un cours</h2>
+  
+    <form (submit)="ajouterCours()" style="max-width: 400px; margin: 0 auto;">
+      <div class="mb-3">
+        <label for="nom" class="form-label">Nom :</label>
+        <input type="text" class="form-control" id="nom" [(ngModel)]="cours.nom" name="nom" required>
+      </div>
+  
+      <div class="mb-3">
+        <label for="nbreHeures" class="form-label">Nombre d'heures :</label>
+        <input type="number" class="form-control" id="nbreHeures" [(ngModel)]="cours.nbreHeures" name="nbreHeures" required>
+      </div>
+  
+      
+  
+      <div class="mb-3">
+        <label for="semestre" class="form-label">Semestre :</label>
+        <select class="form-select" id="semestre" [(ngModel)]="cours.semestreId" name="semestre" required>
+          <option value="">Sélectionner un semestre</option>
+          <option *ngFor="let semestre of semestres" [value]="semestre.id">{{ semestre.libelle }}</option>
+        </select>
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Ajouter</button>
+    </form>
+  </div>
+  

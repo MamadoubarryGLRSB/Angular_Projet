@@ -1,0 +1,32 @@
+<div class="container">
+    <h1>Liste des modules</h1>
+    <div class="text-end mb-3">
+      <button class="btn btn-outline-info">
+        <span  [routerLink]="['/add-modules']" >Ajouter un module</span>
+      </button>
+    </div>
+  
+    <div *ngIf="erreurSuppression" class="alert alert-danger">{{ erreurSuppression }}</div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Libellé</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let module of modules">
+          <td>{{ module.id }}</td>
+          <td>{{ module.libelle }}</td>
+          <td>
+            <div class="btn-group" role="group" aria-label="Actions">
+              <button class="btn btn-danger me-2" (click)="confirmerSuppression(module.id)">Supprimer</button>
+              <button class="btn btn-primary" [routerLink]="['/update-module', module.id]">Modifier</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

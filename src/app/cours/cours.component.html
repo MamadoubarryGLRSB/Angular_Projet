@@ -1,0 +1,34 @@
+<div class="container">
+  <h2 class="text-center">Liste des cours</h2>
+  <div class="text-end mb-3">
+    <button class="btn btn-outline-info me-2" [routerLink]="['/aadd-cours']">Ajouter</button>
+  </div>
+
+  <button class="btn btn-outline-success me-2" (click)="filtrerEnCours()">En cours</button>
+    <button class="btn btn-outline-success me-2" (click)="filtrerTermines()">Terminés</button>
+    <button class="btn btn-outline-success me-2" (click)="afficherTous()">Tous</button>
+
+  <table class="table mt-3">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Nombre d'heures</th>
+        <th>État</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cours of filteredCours">
+        <td>{{ cours.id }}</td>
+        <td>{{ cours.nom }}</td>
+        <td>{{ cours.nbreHeures }}</td>
+        <td>{{ cours.etat }}</td>
+        <td>
+          <button (click)="sessionChange(cours)" class="btn btn-success me-2">Terminer</button>
+          <button (click)="annulerSessionCours(cours)" class="btn btn-info me-2">Annuler</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

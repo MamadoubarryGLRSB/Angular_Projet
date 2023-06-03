@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="alert alert-success mt-3" *ngIf="messageAjout">{{ messageAjout }}</div>
+
+      <form [formGroup]="sessionCoursForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label>Date:</label>
+          <input type="date" class="form-control" formControlName="date">
+        </div>
+
+        <div class="form-group">
+          <label>Numéro de salle:</label>
+          <select class="form-control" formControlName="salleId">
+            <option *ngFor="let salle of salles" [value]="salle.id">{{ salle.numero }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Nom du professeur:</label>
+          <select class="form-control" formControlName="professeurId">
+            <option *ngFor="let professeur of professeurs" [value]="professeur.id">{{  professeur.nomComplet }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Nom de la Classe:</label>
+          <select class="form-control" formControlName="classeId">
+            <option *ngFor="let classe of classes" [value]="classe.id">{{ classe.libelle }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Libellé du module:</label>
+          <select class="form-control" formControlName="moduleId">
+            <option *ngFor="let module of modules" [value]="module.id">{{ module.libelle }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Nombre d'heures:</label>
+          <select class="form-control" formControlName="coursId">
+            <option *ngFor="let cours of cours" [value]="cours.id">{{ cours.nbreHeures }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Heure de début:</label>
+          <input type="number" class="form-control" formControlName="heureDebut">
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="sessionCoursForm.invalid">Ajouter</button>
+      </form>
+    </div>
+  </div>
+</div>

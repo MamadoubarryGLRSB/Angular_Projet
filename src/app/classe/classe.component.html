@@ -1,0 +1,38 @@
+<div class="container">
+    <h1>Liste des classes</h1>
+  
+    <!-- Bouton Ajouter -->
+    <div class="text-end mb-3">
+      <button class="btn btn-outline-info">
+        <span  [routerLink]="['/add-classe']" >Ajouter une classe</span>
+      </button>
+   </div>
+  
+    <!-- Affichage de la liste des classes -->
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Libellé</th>
+          <th>Niveau</th>
+          <th>Filière</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let classe of classes">
+          <td>{{ classe.id }}</td>
+          <td>{{ classe.libelle }}</td>
+          <td>{{ classe.niveau }}</td>
+          <td>{{ classe.filiere }}</td>
+          <td>
+            <div class="d-flex">
+              <button class="btn btn-danger me-2" (click)="confirmerSuppression(classe.id)">Supprimer</button>
+              <button class="btn btn-primary" [routerLink]="['/update-class', classe.id]">Modifier</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
